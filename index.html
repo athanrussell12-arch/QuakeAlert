@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QuakeAlert — IoT Seismic Monitoring</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== AUTH SCREEN ===== -->
+<div id="auth" class="auth">
+  <div class="authCard">
+    <div class="brand"><span class="logo">◈</span> QuakeAlert</div>
+    <p class="sub">IoT Earthquake &amp; Structural Vibration Monitoring</p>
+
+    <label class="field"><span>Email</span>
+      <input id="email" type="email" autocomplete="username" value="demo@quakealert.io">
+    </label>
+    <label class="field"><span>Password</span>
+      <input id="password" type="password" autocomplete="current-password" value="quake123">
+    </label>
+
+    <div class="row">
+      <button id="btnLogin" class="btn primary block">Sign In</button>
+      <button id="btnSignup" class="btn block">Create Account</button>
+    </div>
+    <div id="authMsg" class="msg"></div>
+    <div class="footnote">🔒 AES-256-GCM · PBKDF2-SHA256 · 150,000 iterations</div>
+  </div>
+</div>
+
+<!-- ===== APP SHELL ===== -->
+<div id="app" hidden>
+  <header>
+    <div class="brand"><span class="logo">◈</span> QuakeAlert</div>
+    <div class="pill NORMAL" id="statusPill">NORMAL</div>
+    <div class="spacer"></div>
+    <div class="conn"><span class="dot sim" id="connDot"></span><span id="connText">SIMULATION</span></div>
+    <div class="user" id="userInfo"></div>
+    <button class="btn ghost sm" id="btnLogout">Sign out</button>
+  </header>
+
+  <nav id="tabs">
+    <button data-tab="dashboard" class="active">Dashboard</button>
+    <button data-tab="devices">Devices</button>
+    <button data-tab="alerts">Alerts</button>
+    <button data-tab="actuators">Actuators</button>
+    <button data-tab="billing">Billing</button>
+    <button data-tab="settings">Settings</button>
+  </nav>
+
+  <main>
+    <section id="tab-dashboard">
+      <div class="grid kpis">
+        <div class="card kpi c1">
+          <div class="lbl">Peak Ground Accel</div>
+          <div class="val"><span id="kPga">0.000</span><span class="unit">g</span></div>
+          <div class="bar"><i id="bPga"></i></div>
+        </div>
+        <!-- duplicate for kMag, kMmi, kFreq, kHealth -->
+      </div>
+
+      <div class="card mb">
+        <h3>Live Ground Motion — Resultant Acceleration</h3>
+        <canvas id="wave" style="height:260px"></canvas>
+      </div>
+
+      <div class="grid two mb">
+        <div class="card">
+          <h3>Tri-Axial Seismograph</h3>
+          <canvas id="axes" style="height:170px"></canvas>
+        </div>
+        <div class="card">
+          <h3>Recent Alerts</h3>
+          <div class="list" id="miniAlerts"><div class="empty">No alerts</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tab-devices" hidden></section>
+    <section id="tab-alerts" hidden></section>
+    <section id="tab-actuators" hidden></section>
+    <section id="tab-billing" hidden></section>
+    <section id="tab-settings" hidden></section>
+  </main>
+</div>
+
+<div class="toasts" id="toasts"></div>
+<script src="js/app.js"></script>
+</body>
+</html>
