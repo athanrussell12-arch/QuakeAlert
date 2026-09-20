@@ -1,0 +1,31 @@
+:root{
+  --bg:#060a11; --bg2:#0a1220; --panel:#0f1826; --line:#1e2c42;
+  --txt:#e8eef8; --muted:#7d92ae; --dim:#4d5f78;
+  --ok:#22c55e; --watch:#eab308; --warn:#f97316; --crit:#ef4444;
+  --accent:#38bdf8; --accent2:#818cf8; --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background: radial-gradient(1200px 700px at 15% -10%, #12203a 0%, transparent 60%), var(--bg);
+  color:var(--txt);
+  font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+#app{display:flex;flex-direction:column;min-height:100vh}
+header{display:flex;align-items:center;gap:14px;padding:12px 20px;
+  background:rgba(9,15,25,.86);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+.spacer{flex:1}
+nav{display:flex;gap:4px;padding:10px 20px 0;overflow-x:auto;
+  border-bottom:1px solid var(--line)}
+nav button{padding:9px 15px;border-radius:10px 10px 0 0;color:var(--muted);
+  font-weight:600;border-bottom:2px solid transparent}
+nav button.active{color:var(--accent);border-bottom-color:var(--accent)}
+main{flex:1;padding:20px;max-width:1500px;width:100%;margin:0 auto}
+.grid{display:grid;gap:16px}
+.kpis{grid-template-columns:repeat(auto-fit,minmax(158px,1fr));margin-bottom:16px}
+.two{grid-template-columns:1.55fr 1fr}
+@media(max-width:940px){.two{grid-template-columns:1fr}}
+.card{background:linear-gradient(180deg,var(--panel),#0c1523);
+  border:1px solid var(--line);border-radius:var(--radius);padding:16px}
+canvas{display:block;width:100%;border-radius:10px}
